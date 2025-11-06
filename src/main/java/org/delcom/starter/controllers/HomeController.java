@@ -5,7 +5,7 @@ import java.util.Locale;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -25,8 +25,8 @@ public class HomeController {
         return "Hello, " + name + "!";
     }
 
-    @GetMapping("/informasi-nim") 
-        public String informasiNim(@RequestParam String nim) {
+    @GetMapping("/informasiNim/{nim}") 
+        public String informasiNim(@PathVariable String nim) {
             HashMap<String, String> prodi = new HashMap<>();
             prodi.put("11S", "Sarjana Informatika");
             prodi.put("12S", "Sarjana Sistem Informasi");
@@ -56,8 +56,8 @@ public class HomeController {
             
         }
     
-    @GetMapping("/perolehan-nilai")
-        public String perolehanNilai(@RequestParam String strBase64) {
+    @GetMapping("/perolehan-nilai/{strBase64}")
+        public String perolehanNilai(@PathVariable String strBase64) {
             String decodedInput = decode(strBase64).trim();
             Locale.setDefault(Locale.US);
             String[] lines = decodedInput.split("\\R");
@@ -149,8 +149,8 @@ public class HomeController {
     
 
 
-    @GetMapping("/perbedaan-l")
-    public String perbedaanL(@RequestParam String strBase64) {
+    @GetMapping("/perbedaanL/{strBase64}")
+    public String perbedaanL(@PathVariable String strBase64) {
         String decodedInput = decode(strBase64).trim();
         
         String[] lines = decodedInput.split("\\R");
@@ -220,8 +220,8 @@ public class HomeController {
         }
     }
 
-    @GetMapping("/paling-ter")
-    public String palingTer(@RequestParam String strBase64) {
+    @GetMapping("/palingTer/{strBase64}")
+    public String palingTer(@PathVariable String strBase64) {
         String decodedInput = decode(strBase64).trim();
 
         String[] lines = decodedInput.split("\\R");
